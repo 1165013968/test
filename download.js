@@ -43,5 +43,12 @@ $(function(){
         
     });
 
+    $('#download').click(function(){
+        $.ajax('exl.json').then(function(res){
+            var csv = res.data;
+            downloadCSV(csv);
+        })
+        
+    });
 
 })
