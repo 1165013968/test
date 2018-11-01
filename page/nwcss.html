@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link type="text/css" href="../css/common.css" rel="stylesheet"/>
+    <!-- <link type="text/css" href="../libs/layui/css/layui.css" rel="stylesheet" /> -->
+    <link type="text/css" href="../libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" />
+    <script type="text/javascript" src="../libs/jquery-1.12.3.min.js"></script>
+    <script type="text/javascript" src="../libs/layui/layui.all.js"></script>
+    <script type="text/javascript" src="../libs/My97DatePicker/WdatePicker.js" ></script>
+    <title>内网UI</title>
+    
+</head>
+
+<body>
+    
+    <!-- 按钮 -->
+    <h2>按钮</h2>
+    <input class="h-btn h-blue-btn" type="button" value="保存">
+    <button class="h-btn h-grey-btn">登录</button>
+    <button class="h-btn h-cancel-btn">返回</button>
+
+    <h2>组件</h2>
+    <!-- 输入框 -->
+    <h3>输入框</h3>
+    <p>
+        <input class="h-input" type="text" value="" name="name" placeholder="input some words"/>
+    </p>
+    <p>
+        <input class="h-input h-input-grey" type="text" value="" disabled/>
+    </p>
+    <!-- 下拉菜单 -->
+    <h3>下拉菜单</h3>
+
+    <!-- 提示框 -->
+    <h3>提示框</h3>
+
+    <!-- 日期控件 -->
+    <h3>日期控件</h3>
+    <input id="dateP" class="Wdate" onfocus="WdatePicker({readOnly:true,maxDate:'%y-%M-%d'})"/>
+
+    <!-- 单选框  复选框-->
+    <h3>单选框  复选框</h3>
+    <p>
+        <input type="radio" name="sex" id="lbl_1"/><label for="lbl_1" class="h-radio">man</label>
+        <input type="radio" name="sex" id="lbl_2"/><label for="lbl_2" class="h-radio">woman</label>
+        <input type="checkbox" name="intrerest" id="lbl_3"/><label for="lbl_3"  class="h-checkbox">basketball</label>
+        <input type="checkbox" name="intrerest" id="lbl_4"/><label for="lbl_4"  class="h-checkbox">piano</label>
+        <input type="checkbox" name="intrerest" id="lbl_5"/><label for="lbl_5"  class="h-checkbox">pingpang</label>
+    </p>
+
+    <!-- loading -->
+    <h3>loading</h3>
+    <p>
+        <div class="h-loading">
+            <!-- <img src="../imgs/loading.png" /> -->
+        </div>
+    </p>
+</body>
+</html>

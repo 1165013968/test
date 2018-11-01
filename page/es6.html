@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <script type="text/javascript" src="../libs/jquery-1.12.3.min.js"></script>
+    <script type="text/javascript" src="../node_modules/_babel-core@5.8.38@babel-core/browser.js"></script>
+    <title>ES6语法</title>
+    
+</head>
+
+<body>
+    <button onclick="openWindow('frameL.html')">openWindow</button>
+    <button onclick="openWindow('frameR.html')">openWindow2</button>
+    
+    <button onclick="closeWindow()">closeWindow</button>
+    <button onclick="showDialog()">showDialog</button>
+    <button onclick="getChildP()">getChildP</button>
+    
+    <script type="text/babel">
+        
+
+    </script>
+    <script type="text/javascript">
+     var w = null;
+        function openWindow (url) {
+            if ( w != null ) {
+                w.close();
+            }
+            w = window.open(url,"","width=500,height=300,left=200,top=30,menubar=no,toolbar=no,status=no,scrollbars=yes")
+        }
+
+        function closeWindow() {
+            w.close();
+        }
+
+        function showDialog () {
+            if(w.closed == true) {
+                console.log("closed")
+            }else{
+                console.log("opened");
+            }
+        }
+
+        function getChildP () {
+            console.log(w);
+        }
+        
+    </script>
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>

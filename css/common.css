@@ -1,0 +1,183 @@
+html {
+    font-size: 14px;
+    font-family: "Microsoft YaHei", Arial, Helvetica, SimSun, sans-serif;
+}
+
+/* 公共样式 */
+p {
+    margin: 1rem;
+}
+/* 按钮 */
+.h-btn {
+    min-width: 6rem;
+    height: 2.4rem;
+    border-radius: 1.2rem;
+    cursor: pointer;
+    color: #fff;
+    padding: 1px 1rem; 
+}
+.h-blue-btn {
+    background: #26c0c3;
+    border: 1px solid #00aeb1;
+}
+.h-blue-btn:hover {
+    border-color: #13b5b8;
+}
+.h-blue-btn:active {
+    background: #00b5b8;
+    border-color: #00a5a8;
+}
+.h-grey-btn {
+    border: 1px solid #c8c8c8;
+    background: #ccc;
+}
+.h-grey-btn:hover {
+    border: 1px solid #c6c6c6;
+    background: #d2d2d2;
+}
+.h-grey-btn:active {
+    background: #c1c1c1;
+}
+.h-cancel-btn {
+    background: #ffa87d;
+    border: 1px solid #ff976a;
+}
+.h-cancel-btn:hover {
+    background: #ffb591;
+    border-color: #ffa075;
+}
+.h-cancel-btn:active {
+    background: #ff8d60;
+    border-color: #ff976a;
+}
+
+/* 输入框 */
+.h-input{
+    box-sizing: border-box;
+    text-indent: 0.5rem;
+    color: #666;
+    border: 1px solid #e4e9f0;
+    height: 2rem;
+    padding: 0;
+    border-radius: 0.2rem;
+    min-width: 20rem;
+}
+.h-input:focus{
+    border:2px solid #cdeefd;
+    box-shadow: 1px 1px 8px 1px #cdeefd;
+}
+.h-input-grey {
+    background: #eee;
+}
+input::-webkit-input-placeholder{
+    color: #999;
+}
+input::-ms-input-placeholder{
+    color: #999;
+}
+input::-moz-placeholder{
+    color: #999;
+}
+input:focus::-webkit-input-placeholder{
+    color: #666;
+}
+input:focus::-ms-input-placeholder{
+    color: #666;
+}
+input:focus::-moz-placeholder{
+    color: #666;
+}
+/* 单选框，复选框 */
+input[type="radio"] {
+    /* display: none; */
+    position: absolute;
+    clip: rect(0,0,0,0);
+}
+input[type="radio"] + label::before {
+    content: "\a0";
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.2rem;
+    width: .7rem;
+    height: .7rem;
+    margin-right: .3rem;
+    border-radius: 50%;
+    border: 1px solid #999;
+    text-indent: .2rem;
+    line-height: 1;
+    padding: .2rem;
+}
+input[type="radio"]:checked + label::before {
+    background-color: #999;
+    background-clip: content-box;
+}
+input[type="radio"]:focus + label::before {
+    box-shadow: 0 0 .03rem .03rem #58a;
+}
+input[type="radio"]:disabled + label::before {
+    background-color: gray;
+    box-shadow: none;
+    color: #555;
+}
+
+input[type="checkbox"] {
+    position: absolute;
+    clip: rect(0,0,0,0);
+}
+input[type="checkbox"] + label::before {
+    content: "\a0";    /* 不换行空格 */ 
+    display: inline-block;
+    vertical-align: .1rem;
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-right: .3rem;
+    border-radius: .2rem;
+    background-color: silver;
+    text-indent: .2rem;
+    line-height: 1;
+}
+input[type="checkbox"]:checked + label::before {
+    background-color: #999;
+    content: "\2713";
+    color: #fff;
+}
+input[type="checkbox"]:focus + label::before {
+    box-shadow: 0 0 .02rem .02rem #58a;
+}
+input[type="checkbox"]:disabled + label::before {
+    background-color: gray;
+    box-shadow: none;
+    color: #555;
+}
+
+/* 加载中loading */
+.h-loading {
+    width: 76px;
+    height: 74px;
+    display: inline-block;
+    background: url("img/loading1.png") no-repeat 0 0;
+    animation: loading1 2s infinite linear;
+    -webkit-animation: loading1 2s infinite linear;
+}
+@keyframes loading1 {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* 下拉菜单 */
+
+/* 日期控件 */
+.Wdate {
+    border: #e4e9f0 1px solid !important;
+}
+.WdateDiv #dpTitle {
+    background: #ccc !important;
+}
+.WdateDiv #dpTitle * {
+    color: #fff;
+    background: #ccc !important;
+}
