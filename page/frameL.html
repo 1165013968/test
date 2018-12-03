@@ -16,11 +16,17 @@
     <button id="childclick" onclick="btnClick()">Lclick</button>
 
     <script type="text/javascript">
+    
         function childleft() {
             alert('this is child method from left iframe');
         }
         function btnClick() {
             window.parent.parenttest();
+            
+            var p = "child window";
+            if (window.opener != null) {
+                window.opener.getChildP(p);
+            }
         }
     </script>
 </body>

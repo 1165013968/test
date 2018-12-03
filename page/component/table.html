@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link type="text/css" href="../../css/common.css" rel="stylesheet" />
+    <link type="text/css" href="../../libs/easyui/css/easyui.css" rel="stylesheet" />
+    <link type="text/css" href="../../css/table.css" rel="stylesheet">
+    <script type="text/javascript" src="../../libs/jquery/jquery-1.4.2.js"></script>
+    <script type="text/javascript" src="../../libs/jquery/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../libs/jquery/jquery.edatagrid.js"></script>
+    <script type="text/javascript" src="../../libs/jquery/jquery.tablesorter.js"></script>
+
+    <!-- <script type="text/javascript" src="../../libs/jquery/jquery.easyui.min.js"></script> -->
+    
+    <title>内网表格</title>
+    <style>
+        /* p {
+            color:yellow!important;
+        } */
+    </style>
+</head>
+
+<body scroll="no">
+    <div region="center" border="true">
+        <ww:form action="/sqgs/searchSqxx.action" name="ryxxcxForm" method="post" id="ryxxcxForm" theme="simple">
+            <div id="top" class="h-card">
+                <table class="Page_Table_Common" width="100%">
+                    <tr>
+                        <td class="Page_TableLabel_Left" style="width:100px">
+                            申请人姓名
+                        </td>
+                        <td class="Page_TableText_Left" style="width:150px">
+                            <ww:textfield name="jtcyxx.xm" id="jtcyxx_xm" theme="simple" cssClass="txtBox" />
+                        </td>
+                        <td class="Page_TableLabel_Left" style="width:100px">
+                            申请人身份证号
+                        </td>
+                        <td class="Page_TableText_Left" style="width:150px">
+                            <ww:textfield name="jtcyxx.zjhm" id="jtcyxx_zjhm" theme="simple" cssClass="txtBox" />
+                        </td>
+                        <td class="Page_TableLabel_Left" style="width:100px">
+                            户籍所在区
+                        </td>
+                        <td class="Page_TableText_Left" style="width:150px">
+                            <ww:select name="jtcyxx.hj" id="jtcyxx_hj" emptyOption="true" theme="simple" list="szhjList" listKey="key" listValue="value"
+                                cssClass="sel  easyui-validatebox" />
+                        </td>
+                        <td class="Page_TableLabel_Left" style="width:100px">
+                            业务状态
+                        </td>
+                        <td class="Page_TableText_Left" style="width:150px">
+                            <ww:select name="jtcyxx.xb" id="jtcyxx_xb" emptyOption="true" theme="simple" list="dict_cxwz" listKey="key" listValue="value"
+                                cssClass="sel  easyui-validatebox" />
+                        </td>
+                        <td class="Page_TableLabel_Left"></td>
+                    </tr>
+
+                    <tr>
+                        <td class="Page_TableLabel_Left">
+                            申请表编号
+                        </td>
+                        <td class="Page_TableText_Left">
+                            <ww:textfield name="gzfsqb.sqbbh" id="gzfsqb_sqbbh" theme="simple" cssClass="txtBox" />
+                        </td>
+                        <td class="Page_TableLabel_Left">
+                            业务类别
+                        </td>
+                        <td class="Page_TableText_Left">
+                            <ww:select name="gzfsqb.ywlb" id="gzfsqb_ywlb" theme="simple" list="dict_baywlb" listKey="key" listValue="value" cssStyle="width:100%"
+                                cssClass="sel easyui-validatebox" emptyOption="true" />
+                        </td>
+                        <td class="Page_TableLabel_Left">
+                            资格证号
+                        </td>
+                        <td class="Page_TableText_Left">
+                            <ww:textfield name="gzfsqb.zgzh" id="gzfsqb_zgzh" theme="simple" cssClass="txtBox" />
+                        </td>
+                        <td class="Page_TableLabel_Left" colspan="3">
+                            <span style="float: left" class="buttons" id="operButtom">
+                                <a href="#" class="negative" name="comUpdate" onclick="submitData();">查询</a>
+                                <a href="#1" class="negative" onclick="qingchu()">重置 </a>
+                                <a href="#2" class="negative" onclick="exportZgzExcel();">导出保障证清册</a>
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="PageContentForFooter h-card" style="overflow:auto;" id="center">
+                <div id="content" style="width:100%;">
+                    <table width="100%" class="tablesorter Page_Table_Common">
+                        <thead>
+                            <tr>
+                                <th class="{sorter: false} Page_TableLabel_Center" width="40px">序号</th>
+                                <th class="{sorter: false} Page_TableLabel_Center" width="40px">
+                                    <input type="checkbox" name="ids" id="ids" onclick="selectAll(this.checked)">
+                                </th>
+                                <th class="Page_TableLabel_Center" style="width:115px">户籍所在区</th>
+                                <th class="Page_TableLabel_Center" style="width:100px">保障家庭类别</th>
+                                <th class="Page_TableLabel_Center" style="width:150px">申请表编号</th>
+                                <th class="Page_TableLabel_Center" style="width:100px">资格证号</th>
+                                <th class="Page_TableLabel_Center" style="width:100px">业务类别</th>
+                                <th class="Page_TableLabel_Center" style="width:100px">姓名</th>
+                                <th class="Page_TableLabel_Center" style="width:90px">与申请人关系</th>
+                                <th class="Page_TableLabel_Center" style="width:60px">性别</th>
+                                <th class="Page_TableLabel_Center" style="width:140px">身份证号</th>
+                                <th class="Page_TableLabel_Center" style="width:60px">保障人口</th>
+                                <th class="Page_TableLabel_Center" style="width:60px">家庭人口</th>
+                                <th class="Page_TableLabel_Center" style="width:80px">保障面积</th>
+                                <th class="Page_TableLabel_Center" style="width:90px">货币补贴金额</th>
+                                <th class="Page_TableLabel_Center" style="width:100px">申请时间</th>
+                                <th class="Page_TableLabel_Center" style="width:100px">审核通过时间</th>
+                                <th class="Page_TableLabel_Center" style="width:100px">业务状态</th>
+                                <th class="Page_TableLabel_Center" style="width:100px">当前状态</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ww:iterator value="sqgsList" status="rowstatus" id="bp">
+                                <tr onmouseover="overRow($(this))" onmouseout="outRow($(this))" flag="true" onclick="selectRow($(this))">
+                                    <td class="Page_TableText_Center">dd
+                                    </td>
+                                    <td class="Page_TableText_Center">
+                                        <input type="checkbox" name="selIds" value="kk" onclick="event.cancelBubble=true">
+                                        <!-- <ww:checkbox name="selIds" fieldValue="%{sqbid}" theme="simple" onclick="event.cancelBubble=true" />
+                                        <input type="hidden" id="ywlb_<ww:property value='sqbid'/>" value="<ww:property value='ywlb'/>" />
+                                        <input type="hidden" id="ywslid_<ww:property value='sqbid'/>" value="<ww:property value='ywslid'/>" /> -->
+                                    </td>
+                                    <td class="Page_TableText_Left">
+                                        <ww:iterator value="szhjList">
+                                            <ww:if test="key==hj">dd
+                                                <ww:property value="value" />
+                                            </ww:if>
+                                        </ww:iterator>
+                                    </td>
+                                    <td class="Page_TableText_Left">
+                                        <ww:iterator value="bzdxlxList">
+                                            <ww:if test="key==bzdxlx">d
+                                                <ww:property value="value" />
+                                            </ww:if>
+                                        </ww:iterator>
+                                    </td>
+                                    <td class="Page_TableText_Left">d
+                                        <ww:property value="sqbbh" />
+                                    </td>
+                                    <td class="Page_TableText_Left">f
+                                        <ww:property value="zgzh" />
+                                    </td>
+                                    <td class="Page_TableText_Left">
+                                        <ww:iterator value="dict_baywlb">f
+                                            <ww:if test="key==ywlb">
+                                                <ww:property value="value" />
+                                            </ww:if>
+                                        </ww:iterator>
+                                    </td>
+                                    <td class="Page_TableText_Left">
+                                        <ww:property value="xm" />f
+                                    </td>
+                                    <td class="Page_TableText_Left">
+                                        <ww:iterator value="dict_rygx">
+                                            <ww:if test="key==gx">
+                                                <ww:property value="value" />f
+                                            </ww:if>
+                                        </ww:iterator>
+                                    </td>
+                                    <td class="Page_TableText_Center">
+                                        <ww:iterator value="dict_xb">
+                                            <ww:if test="key==xb">
+                                                <ww:property value="value" />f
+                                            </ww:if>
+                                        </ww:iterator>
+                                    </td>
+                                    <td class="Page_TableText_Left">
+                                        <ww:property value="zjhm" />f
+                                    </td>
+                                    <td class="Page_TableText_Right">
+                                        <ww:property value="bzrk" />f
+                                    </td>
+                                    <td class="Page_TableText_Right">
+                                        <ww:property value="jtrk" />f
+                                    </td>
+                                    <td class="Page_TableText_Right">
+                                        <ww:property value="bzmj" />f
+                                    </td>
+                                    <td class="Page_TableText_Right">
+                                        <ww:property value="zlbtje" />f
+                                    </td>
+                                    <td class="Page_TableText_Center">
+                                        <ww:date name="sqsj" format="yyyy-MM-dd" />20180912
+                                    </td>
+                                    <td class="Page_TableText_Center">
+                                        <ww:date name="cjsj" format="yyyy-MM-dd" />20181010
+                                    </td>
+                                    <td class="Page_TableText_Left">
+                                        <ww:if test="szk.equals('GZK')">正在办理</ww:if>
+                                        <!-- <ww:elseif test="szk.equals('ZSK')">资格生效</ww:elseif>
+                                        <ww:elseif test="szk.equals('LSK')">历史数据</ww:elseif> -->
+                                    </td>
+                                    <td class="Page_TableText_Left">
+                                        <ww:iterator value="dict_ywzt">
+                                            <ww:if test="key==ywzt">
+                                                <ww:property value="value" />
+                                            </ww:if>
+                                        </ww:iterator>
+                                    </td>
+                                </tr>
+                                <tr onmouseover="overRow($(this))" onmouseout="outRow($(this))" flag="true" onclick="selectRow($(this))">
+                                    <td class="Page_TableText_Center">dd
+                                    </td>
+                                    <td class="Page_TableText_Center">
+                                        <input type="checkbox" name="selIds" value="kk" onclick="event.cancelBubble=true">
+                                        <!-- <ww:checkbox name="selIds" fieldValue="%{sqbid}" theme="simple" onclick="event.cancelBubble=true" />
+                                            <input type="hidden" id="ywlb_<ww:property value='sqbid'/>" value="<ww:property value='ywlb'/>" />
+                                            <input type="hidden" id="ywslid_<ww:property value='sqbid'/>" value="<ww:property value='ywslid'/>" /> -->
+                                    </td>
+                                    <td class="Page_TableText_Left">
+                                        <ww:iterator value="szhjList">
+                                            <ww:if test="key==hj">dd
+                                                <ww:property value="value" />
+                                            </ww:if>
+                                        </ww:iterator>
+                                    </td>
+                                    <td class="Page_TableText_Left">
+                                        <ww:iterator value="bzdxlxList">
+                                            <ww:if test="key==bzdxlx">d
+                                                <ww:property value="value" />
+                                            </ww:if>
+                                        </ww:iterator>
+                                    </td>
+                                    <td class="Page_TableText_Left">d
+                                        <ww:property value="sqbbh" />
+                                    </td>
+                                    <td class="Page_TableText_Left">f
+                                        <ww:property value="zgzh" />
+                                    </td>
+                                    <td class="Page_TableText_Left">
+                                        <ww:iterator value="dict_baywlb">f
+                                            <ww:if test="key==ywlb">
+                                                <ww:property value="value" />
+                                            </ww:if>
+                                        </ww:iterator>
+                                    </td>
+                                    <td class="Page_TableText_Left">
+                                        <ww:property value="xm" />f
+                                    </td>
+                                    <td class="Page_TableText_Left">
+                                        <ww:iterator value="dict_rygx">
+                                            <ww:if test="key==gx">
+                                                <ww:property value="value" />f
+                                            </ww:if>
+                                        </ww:iterator>
+                                    </td>
+                                    <td class="Page_TableText_Center">
+                                        <ww:iterator value="dict_xb">
+                                            <ww:if test="key==xb">
+                                                <ww:property value="value" />f
+                                            </ww:if>
+                                        </ww:iterator>
+                                    </td>
+                                    <td class="Page_TableText_Left">
+                                        <ww:property value="zjhm" />f
+                                    </td>
+                                    <td class="Page_TableText_Right">
+                                        <ww:property value="bzrk" />f
+                                    </td>
+                                    <td class="Page_TableText_Right">
+                                        <ww:property value="jtrk" />f
+                                    </td>
+                                    <td class="Page_TableText_Right">
+                                        <ww:property value="bzmj" />f
+                                    </td>
+                                    <td class="Page_TableText_Right">
+                                        <ww:property value="zlbtje" />f
+                                    </td>
+                                    <td class="Page_TableText_Center">
+                                        <ww:date name="sqsj" format="yyyy-MM-dd" />20180912
+                                    </td>
+                                    <td class="Page_TableText_Center">
+                                        <ww:date name="cjsj" format="yyyy-MM-dd" />20181010
+                                    </td>
+                                    <td class="Page_TableText_Left">
+                                        <ww:if test="szk.equals('GZK')">正在办理</ww:if>
+                                        <!-- <ww:elseif test="szk.equals('ZSK')">资格生效</ww:elseif>
+                                            <ww:elseif test="szk.equals('LSK')">历史数据</ww:elseif> -->
+                                    </td>
+                                    <td class="Page_TableText_Left">
+                                        <ww:iterator value="dict_ywzt">
+                                            <ww:if test="key==ywzt">
+                                                <ww:property value="value" />
+                                            </ww:if>
+                                        </ww:iterator>
+                                    </td>
+                                </tr>
+                            </ww:iterator>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="bottom">
+                <div id="PageFooter">
+                    <a href="javascript:void(0)" class="easyui-linkbutton" icon="icon-set" onclick="javascript:resetRy();">查看详细信息</a>
+                </div>
+                <div style="display:none">
+                    <div id="eway_dialog" icon="icon-edit" closed="true" style="padding:5px;width:400px;height:200px;"></div>
+                    <div id="bgeway_dialog" icon="icon-edit" closed="true" style="padding:5px;width:400px;height:200px;">
+                        <iframe style="width:100%;height:100%" frameborder="0" marginheight="0" marginwidth="0" id="bgDialogFrame"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div id="pagination" class="list_pagination"></div>
+            <ww:hidden name="page.currentPageNo" id="currentPageNo" value="%{page.currentPageNo}" />
+            <ww:hidden name="page.pageSize" id="pageSize" value="%{page.pageSize}" />
+            <ww:hidden name="page.totalPageCount" id="totalPageCount" value="%{page.totalPageCount}" />
+            <ww:hidden id="totalSize" value="%{page.totalSize}" />
+            <ww:hidden id="finalPageSize" value="%{page.finalPageSize}" />
+
+        </ww:form>
+    </div>
+
+    <br/>
+    <div region="south" border="true">
+        <table  id="tt" class="easyui-datagrid h-card" fit="true" singleSelect="false" rownumbers="true">
+            <thead>
+                <tr>
+                    <th field="id" width="30" checkbox="true"></th>
+                    <!-- <th field="szqyView" hidden="true"></th>
+                    <th field="lsbzView" hidden="true"></th>
+                    <th field="typeView" hidden="true"></th>
+                    <th field="zjbzView" hidden="true"></th> -->
+                    <th field="szqy" width="80" align="left">所在区域</th>
+                    <th field="szqyxs" width="70"  align="right">系数</th>
+                    <th field='type' width="100"  align="left">保障家庭类别</th>
+                    <th field='kssj' width="90" align="center">有效期起</th>
+                    <th field='jssj' width="90" align="center">有效期止</th>
+                    <th field="lsbz" width="70" align="center">是否有效</th>
+                    <th field="zjbz" width="70" align="center">租金或补贴</th>
+                    <th field="cjsj" width="130" align="center">最后修改时间</th>
+                    <th field="bz" width="220">备注</th>
+                </tr>
+            </thead>
+            <ww:iterator value="szqyxsList" status="rowstatus">
+                <tr >
+                    <td><input type="checkbox"></td>
+                    <!-- <td><ww:property value="id"/></td> -->
+                    <!-- <td><ww:property value="szqy"/></td>
+                    <td><ww:property value="lsbz"/></td>
+                    <td><ww:property value="type"/></td>
+                    <td><ww:property value="zjbz"/></td> -->
+                    <td>
+                        <ww:iterator value="dict_szcq">d
+                            <ww:if test="key == szqy">
+                                <ww:property value="value"/>
+                            </ww:if>
+                        </ww:iterator>
+                    </td>
+                    <td><ww:property value="szqyxs"/>3</td>
+                    <td>
+                        <ww:iterator value="blfsList">fa
+                            <ww:if test="key == type">
+                                <ww:property value="value"/>
+                            </ww:if>
+                        </ww:iterator>
+                    </td>
+                    <td><ww:date name="kssj" format="yyyy-MM-dd"/>20180912</td>
+                    <td><ww:date name="jssj" format="yyyy-MM-dd"/>20181010</td>
+                    <td>
+                        <ww:if test="lsbz==0">是</ww:if>
+                        <!-- <ww:else>否</ww:else> -->
+                    </td>
+                    <td>
+                        <ww:iterator value="dict_qyxslb">
+                            <ww:if test="key == zjbz">
+                                <ww:property value="value"/>3000
+                            </ww:if>
+                        </ww:iterator>
+                    </td>
+                    <td><ww:property value="cjsj"/>20181202</td>
+                    <td ><ww:property value="bz"/>d</td>
+                </tr>
+                <tr >
+                    <td>a</td>
+                    <td>b</td>
+                    <td>3</td>
+                    <td>f</td>
+                    <td>20180912</td>
+                    <td>20181010</td>
+                    <td>否</td>
+                    <td>1000</td>
+                    <td>20181202</td>
+                    <td>no</td>
+                </tr>
+            </ww:iterator>
+        </table>
+
+        <div id="pagination" class="list_pagination"></div>
+        <ww:hidden name="page.currentPageNo" id="currentPageNo" value="%{page.currentPageNo}"/>
+        <ww:hidden name="page.pageSize" id="pageSize" value="%{page.pageSize}"/>
+        <ww:hidden name="page.totalPageCount" id="totalPageCount" value="%{page.totalPageCount}"/>
+        <ww:hidden id="totalSize" value="%{page.totalSize}"/>
+        <ww:hidden id="finalPageSize" value="%{page.finalPageSize}"/>
+        <div id="PageFooter">
+            <a href="javascript:void(0);" class="easyui-linkbutton" icon="icon-new" onclick="javascript:createBtxs();">新建</a>
+            <a href="javascript:void(0);" class="easyui-linkbutton" icon="icon-edit" onclick="javascript:editBtxs();">修改</a>
+             <a href="javascript:void(0);" class="easyui-linkbutton" icon="icon-delete" onclick="javascript:deleteBtxs();">删除</a>
+        </div>
+    </div>
+</div>
+
+    <script type="text/javascript">
+        
+        function overRow(row) {
+            row.removeClass("Tr_Mouse_Out").addClass("Tr_Mouse_Default_Over");
+        }
+
+        function outRow(row) {
+            row.removeClass("Tr_Mouse_Default_Over").addClass("Tr_Mouse_Out")
+        }
+        // 
+        function selectRow(row) {
+            if (row.hasClass("Tr_Mouse_Pointer_Over")) {
+                row.removeClass("Tr_Mouse_Pointer_Over");
+
+            } else {
+                row.addClass("Tr_Mouse_Pointer_Over");
+            }
+            row.find('[type=checkbox]').attr('checked', false == row.find('[type=checkbox]').attr('checked'));
+            console.log(row.find('[type=checkbox]').attr('checked'))
+        }
+
+        function resetRy() {
+            var checkeds = $("input[name='selIds']:checked");
+            // if ($("[name=selIds][type=checkbox][checked]").length != 1) {
+            if (checkeds.length != 1) {
+                $.messager.alert("选择错误", "请选择一条数据", "warning");
+                return null;
+            }
+            var selections = checkeds.val();
+            var url = "../opener.html?ywslid=" + selections;
+            var params = { "id": "sqcx" };
+
+showMyModal()
+            // if (window.showModalDialog) {
+            //     window.showModalDialog(url, [params], 'dialogWidth:1020px;dialogHeight:500px;center:yes;status:no');
+
+            // } else {
+            //     window.open(url, 'new page', "width:1020,height:500,left:300,top:100,menubar=no,toolbar=no,status=no,scrollbars=yes");
+            // }
+
+
+            // var ywslid = document.getElementById("ywslid_" + selections).value;
+            // var url = "<%=webRoot%>/gzfsqb/disSqxx.action?ywslid=" + ywslid;
+            // showModalDialog('<%=webRoot%>/soar/zfbz/gzf/gzfryxxcx/iframe.jsp', [url], 'dialogWidth:1020px;dialogHeight:500px;center:yes;status:no');
+
+        }
+
+
+        //开启模式窗口
+        function showMyModal() {
+            var url = "../opener.html?ywslid=";
+            //传入参数示例
+            var param = [[1,2],[5,2]];
+
+            var modalReturnValue = myShowModalDialog(url, param, 300, 500);
+            //alert(modalReturnValue.name);
+            //窗口关闭后执行某些方法
+            //TODO　sth
+            console.log(modalReturnValue)
+        }
+        //弹出框google Chrome执行的是open
+        function myShowModalDialog(url, args, width, height) {
+            var tempReturnValue;
+            if (navigator.userAgent.indexOf("Chrome") > 0) {
+                var paramsChrome = 'height=' + height + ', width=' + width + ', top=' + (((window.screen.height - height) / 2) - 50) +
+                    ',left=' + ((window.screen.width - width) / 2) + ',toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no';
+                window.open(url, "newwindow", paramsChrome);
+            }
+            else {
+                var params = 'dialogWidth:' + width + 'px;dialogHeight:' + height + 'px;status:no;dialogLeft:'
+                            + ((window.screen.width - width) / 2) + 'px;dialogTop:' + (((window.screen.height - height) / 2) - 50) + 'px;';
+                tempReturnValue = window.showModalDialog(url, args, params);
+            }
+            return tempReturnValue;
+        }
+
+        // function disableBackKey(){ 
+        //     document.onkeydown = function(){
+        //         if(event.keyCode==8 && document.activeElement.tagName!="INPUT" && document.activeElement.tagName!="TEXTAREA"){//退格键	 
+        //             event.keyCode=0;
+        //             return false;
+        //         }
+        //     }
+        // }
+
+        // if(window.addEventListener){
+
+        //     window.addEventListener("onload", disableBackKey,false);//copy Control
+        // }else if(window.attachEvent){
+
+        //     window.attachEvent("onload", disableBackKey);//copy Control
+        // }
+
+
+    </script>
+
+    <script type="text/javascript">
+    var sc_id = "";
+    //新增补贴系数窗口
+    function createBtxs(){
+        var url="<%=webRoot%>/csgl/openSzqybtxs.action";
+        openDialog("新增公租房规则信息",url);
+    }
+
+    //修改补贴系数窗口
+    function editBtxs(){
+        var select = $("#tt").datagrid("getSelections");
+        if(select.length!=1){
+            $.messager.alert("提示","请选择一条需要修改的数据","warning");
+            return;
+        }
+        var url="<%=webRoot%>/csgl/openSzqybtxs.action?tpgSzqyxs.id="+select[0]['id'];
+        openDialog("修改公租房规则信息",url);
+    }
+    function openDialog(title, url) {
+        $('#eway_dialog').dialog({
+            href:url,
+            width:600,
+            height:300,
+            closed:false,
+            title:title,
+            maximizable:false,
+            iconCls:"icon-new",
+            buttons:[
+                {
+                    text:"保存",
+                    iconCls:'icon-save',
+                    handler:function() {
+                        doSave();
+                    }
+                },
+                {
+                    text:'取消',
+                    iconCls:'icon-cancel',
+                    handler:function() {
+                        $('#eway_dialog').dialog('close');
+                    }
+                }
+            ]
+        }, 'open');
+        $('#eway_dialog').dialog("refresh");
+    }
+    //TODO 删除
+    function  deleteBtxs(){
+        var selected = $("#tt").datagrid("getSelections");
+        if(selected.length==0){
+            alert("请选择需要删除的数据！");
+            return;
+        }
+        var idArr=[];
+        for(var i=0;i<selected.length;i++){
+            idArr.push(selected[i]['id']);
+        }
+        var data={};
+        data['deleteIdList']=idArr.join(',');
+        //TODO ajax请求删除数据
+        if (confirm("确定要删除选中的选项吗？")) {
+            var url ="<%=webRoot%>/csgl/deleteSzqxbtxs.action"
+            $.ajax({
+                url:url,
+                data:data,
+                async:false,
+                success:function (msg) {
+		     alert("删除成功");
+                    selectbtxsForm.submit();
+                }
+            });
+        }
+        //TODO 删除后刷新页面
+    }
+    </script>
+</body>
+
+</html>

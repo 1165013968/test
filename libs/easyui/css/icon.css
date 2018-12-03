@@ -1,0 +1,155 @@
+.icon-add{
+	background:url('icons/edit_add.png') no-repeat;
+}
+.icon-remove{
+	background:url('icons/edit_remove.png') no-repeat;
+}
+.icon-move{
+	background:url('icons/edit_move.png') no-repeat;
+}
+.icon-save{
+	background:url('icons/filesave.png') no-repeat;
+}
+.icon-cut{
+	background:url('icons/cut.png') no-repeat;
+}
+.icon-ok{
+	background:url('icons/ok.png') no-repeat;
+}
+.icon-no{
+	background:url('icons/no.png') no-repeat;
+}
+.icon-cancel{
+	background:url('icons/cancel.png') no-repeat;
+}
+.icon-reload{
+	background:url('icons/reload.png') no-repeat;
+}
+.icon-search{
+	background:url('icons/search.png') no-repeat;
+}
+.icon-print{
+	background:url('icons/print.png') no-repeat;
+}
+.icon-Except{
+	background:url('icons/Except.png') no-repeat;
+}
+.icon-Excel{
+	background:url('icons/excel.gif') no-repeat;
+
+}
+.icon-help{
+	background:url('icons/help.png') no-repeat;
+}
+.icon-undo{
+	background:url('icons/undo.png') no-repeat;
+}
+.icon-redo{
+	background:url('icons/redo.png') no-repeat;
+}
+.icon-back{
+	background:url('icons/back.png') no-repeat;
+}
+.icon-saving{
+	background:url('icons/saving.gif') no-repeat;
+}
+.icon-diaozhi{
+	background:url('icons/diaozhi.png') no-repeat;
+}
+.icon-jianzhi{
+	background:url('icons/set_jianzhi.png') no-repeat;
+}
+.icon-disjianzhi{
+	background:url('icons/dis_jianzhi.png') no-repeat;
+}
+.icon-reset{
+	background:url('icons/reload.png') no-repeat;
+}
+.icon-open{
+	background:url('icons/openfoldericon.png') no-repeat;
+}
+.icon-position{
+	background:url('icons/set_position.png') no-repeat;
+}
+.icon-disposition{
+	background:url('icons/dis_position.png') no-repeat;
+}
+.icon-role{
+	background:url('icons/set_role.png') no-repeat;
+}
+.icon-disrole{
+	background:url('icons/dis_role.png') no-repeat;
+}
+.icon-delete{
+	background:url('icons/edit_remove.png') no-repeat;
+}
+.icon-new{
+	background:url('icons/edit_add.png') no-repeat;
+}
+.icon-view{
+    background:url('icons/view.png') no-repeat;
+}
+.icon-edit{
+	background:url('icons/pencil.png') no-repeat;
+}
+.icon-select{
+	background:url('icons/select.png') no-repeat;
+}
+.icon-select_2{
+	background:url('icons/select_2.png') no-repeat;
+}
+.icon-navigation{
+	background:url('icons/navigation.png') no-repeat;
+}
+.icon-user{
+	background:url('icons/set_user.png') no-repeat;
+}
+.icon-org{
+	background:url('icons/org.png') no-repeat;
+}
+.icon-levelorg{
+	background:url('icons/levelorg.png') no-repeat;
+}
+.icon-disuser{
+	background:url('icons/dis_user.png') no-repeat;
+}
+.icon-chart{
+	background:url('icons/chart.png') no-repeat;
+}
+.icon-compare{
+	background:url('icons/compare.png') no-repeat;
+}
+.icon-magnify{
+	background:url('icons/magnify.png') no-repeat;
+}
+.icon-reduce{
+	background:url('icons/reduce.png') no-repeat;
+}
+.icon-fold{
+	background:url('icons/fold.png') no-repeat;
+}
+.icon-find{
+    background:url('icons/search.gif') no-repeat;
+}
+.icon-unfold{
+	background:url('icons/unfold.png') no-repeat;
+}
+.icon-refresh{
+	background:url('icons/refresh.png') no-repeat;
+}
+.icon-set{
+	background:url('icons/set.png') no-repeat;
+}
+/*add by liulei*/
+.icon-copy{
+	background:url('icons/copy.png') no-repeat;
+}
+
+.icon-left{
+	background:url('icons/left.png') no-repeat;
+}
+
+.icon-right{
+	background:url('icons/right.png') no-repeat;
+}
+

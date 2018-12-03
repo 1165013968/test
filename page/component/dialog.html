@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link type="text/css" href="../../css/common.css" rel="stylesheet"/>
+    <link type="text/css" href="../../libs/easyui/css/easyui.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="../../libs/jquery/jquery-1.4.2.js"></script>
+    <script type="text/javascript" src="../../libs/jquery/jquery.easyui.min.js"></script>
+    
+    <!-- <script type="text/javascript" src="../../libs/jquery-1.12.3.min.js"></script> -->
+    <!-- <script type="text/javascript" src="../../libs/layui/layui.all.js"></script> -->
+    <title>内网弹框</title>
+
+</head>
+<body>
+    <button onclick="dialog()">alert</button>
+    <div id="showBox"></div>
+
+<script type="text/javascript">
+    function dialog () {
+        // var win = $("<div>win</div>").appendTo("body");
+        // console.log(win.window({title:"hello",width:300,height:"auto",modal:true,collapsible:false,minimizable:false,maximizable:false,resizable:false,onClose:function(){
+        //     alert(1)
+        // }}))
+
+        $.messager.alert("选择错误", "请选择一条数据", "warning",callback,closeFn);
+
+        // $.messager.autoWidthAndHeightAlert("title","msg","",300,200);
+        // showWindow('../framePrt.html','modify',1200,500);
+    }
+
+    function callback (){       //此方法调用本身，也会调用closeFn
+        console.log("callback ok");
+    }
+
+    function closeFn(){
+        console.log("x function")
+    }
+
+// Window.prototype.showModalDialog = function(sUrl,vArguments,sFeatures) {};
+        //显示窗口
+    function showWindow(url, title, width, height, params) {
+        title = title || '';
+        width = width || 800;
+        height = height || 600;
+        params = params || {'pwindow': window};
+        var win = $("<iframe src='"+ url +"'>wim</iframe>").appendTo("body");
+        win.window({title:title,width:width,height:height,modal:true,collapsible:false,minimizable:false,maximizable:false})
+    }
+    
+    // interface Window extends EventTarget, MSEventAttachmentTarget, WindowLocalStorage, MSWindowExtensions, WindowSessionStorage, WindowTimers {
+    //     showModalDialog(url?: string, argument?: any, options?: any): any;
+    // }
+    // declare function showModalDialog(url?: string, argument?: any, options?: any): any;
+
+
+</script>
+</body>
+
+</html>

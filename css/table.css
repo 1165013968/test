@@ -1,0 +1,128 @@
+table.Page_Table_Common{border:0; border-collapse:collapse; background-color:#fff;table-layout:fixed}
+*html #IE6{width:98%; float:left}
+table.Page_Table_Common tr.Page_FormHeader/*ͷ*/ {color: #1360a6;background: #ECF7FD ;padding:1px 5px;border: #adc5e5 1px solid; line-height:24px;}
+table.Page_Table_Common td.Page_FormHeader/*ͷ*/ {color: #1360a6;background: #ECF7FD;padding:1px 5px;border: #adc5e5 1px solid; line-height:24px;}
+table.Page_Table_Common td.Page_TableLabel_Left/*表单居左*/{ 
+    text-align:left; padding-left:5px;background:#fff;vertical-align:middle ; white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+    font-size: 14px;
+    font-weight: bold;
+}
+table.Page_Table_Common td.Page_TableLabel_Center /*表单居中*/{text-align:center; background:#fff ; white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+table.Page_Table_Common td.Page_TableLabel_Center_Wrap /*表单居中*/{text-align:center; background:#fff ;overflow:hidden;text-overflow:ellipsis;}
+table.Page_Table_Common td.Page_TableLabel_Right/*表单居右*/{text-align:right; background:#fff ; white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+table.Page_Table_Common td.Page_TableText_Left /*文字居左*/{text-align:left;padding-left:5px;vertical-align:middle;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+table.Page_Table_Common td.Page_TableText_Left_Wrap /*文字居左,允许换行*/{text-align:left;padding-left:5px;vertical-align:middle;overflow:hidden;}
+table.Page_Table_Common td.Page_TableText_Center /*文字居中*/{text-align:center ;vertical-align:middle;white-space:nowrap; overflow:hidden;text-overflow:ellipsis;}
+table.Page_Table_Common td.Page_TableText_Center_Wrap /*文字居中,允许换行*/{text-align:center;vertical-align:middle;overflow:hidden;}
+table.Page_Table_Common td.Page_TableText_Right /*文字居右*/{text-align:right ;vertical-align:middle;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+table.Page_Table_Common td.Page_TableText_Right_Wrap/*文字居右,允许换行*/{text-align:right;vertical-align:middle;overflow:hidden;}
+
+table.Page_Table_Common td{font-size:12px; color:#333;  padding:1px 5px; 
+    /* border:#E0ECFF solid 1px;  */
+    vertical-align:middle; line-height:20px; 
+    /* background-image:url(../images/line.gif); */
+     /* background-repeat:repeat-y; background-position:right; */
+    width:130px;
+    /* display: inline-block; */
+}
+table.Page_Table_Common tr.odd_row:hover, table.dataTable tr.odd_row:hover a /*鼠标经过*/{background-color:#d9dde8; 
+    /* background-image:url(../images/move_bg.gif); background-repeat:repeat-x; */
+}
+table.Page_Table_Common tr.gray_bg{background-color:#F5F5F5}
+table.Page_Table_Common tr.yellow_bg{background-color:#fdf5e1}
+table.Page_Table_Common .Page_FormFoot td/*底部*/{height:22px; line-height:22px; 
+    /* background-image:url(../images/lan_foot_bg.gif); background-repeat:repeat-x; background-position:0px 3px; */
+}
+
+
+input.txtBox{
+    /* width:100%;  */
+    height:20px; line-height:18px; 
+    border:#cccccc solid 1px; 
+    background-color:#fff; color:#333; font:Arial; text-align:left; padding:0 2px;
+    width: 90%;
+}
+textarea.txtBox{
+    /* width:100%; */
+    width: 90%; 
+    line-height:18px; 
+    border:#cccccc solid 1px; 
+    background-color:#fff; color:#333; font:Arial; text-align:left; padding:0 2px;
+}
+.h-card {
+    border: 1px solid #ccc;
+    margin: 10px;
+    width: 90%;
+    box-shadow: 1px 1px 3px 1px #ccc;
+}
+
+.Page_Table_Common tr {
+    height: 30px;
+    line-height: 30px;
+}
+
+.buttons a,.buttons button{
+    /* display:block; */
+    float:left;
+    /* background-color:#f5f5f5;
+    border:1px solid #aaa; */
+    font-size:12px;line-height:130%;
+    text-decoration:none;
+    /* color:#565656; */
+    cursor:pointer;margin:2px 4px 0 4px;
+    /* padding:1px 10px 1px 7px; */
+
+    display: inline-block;
+    color: #fff;
+    background: #26c0c3;
+    padding: 5px 15px;
+    border-radius: 3px;
+}
+
+.buttons button{width:auto;overflow:visible;padding:4px 10px 3px 7px;}
+.buttons button[type]{line-height:17px;padding:5px 10px 5px 7px;}
+/* :first-child+html button[type]{padding:4px 10px 3px 7px;} */
+.buttons button img,.buttons a img{border:none;width:16px;height:16px;margin:0 3px -3px 0 !important;padding:0;}
+button.negative,.buttons a.negative{
+    /* color:#369;
+    border:1px solid #808080; */
+    color:#ffffff;
+}
+.buttons a.negative:hover,button.negative:hover{background-color:#FFECA8;border:1px solid #808080;color:#369;}
+.buttons a.negative:active{background-color:#6299c5;border:1px solid #6299c5;color:#fff;}
+button:hover,.buttons a:hover{background-color:#dff4ff;border:1px solid #c2e1ef;color:#369;}
+.buttons a:active{background-color:#6299c5;border:1px solid #6299c5;color:#fff;}
+
+.panel-body {
+    border: 0px;
+}
+.datagrid-header{overflow:hidden; 
+    /* background:#fafafa url('images/datagrid_header_bg.gif') repeat-x left bottom;  */
+    background: #F9F9F9;
+    border-bottom:1px solid #ccc; margin-bottom:1px;
+}
+.datagrid-header td{border-right:1px dotted #ccc; font-size:12px; font-weight:normal; 
+    background: #F9F9F9;
+    /* background:#fafafa url('images/datagrid_header_bg.gif') repeat-x left bottom;  */
+    border-bottom:1px dotted #ccc; 
+    border-top:1px dotted #fff
+}
+.datagrid-td-rownumber{
+    background: #F9F9F9;
+    /* background:#fafafa url('images/datagrid_header_bg.gif') repeat-x left bottom */
+}
+
+.Tr_Mouse_Normal{background-color:#000}
+/* .Tr_Mouse_Default_Over{background-color:#E9E9E9;} */
+.Tr_Mouse_Default_Over{background-color:#D0E5F5;}
+/* .Tr_Mouse_Pointer_Over{background-color:#FDF5E1; cursor:Pointer} */
+.Tr_Mouse_Pointer_Over{background-color:#00B5B8 !important;  cursor:Pointer;color: #fff;}
+tr.Tr_Mouse_Pointer_Over td {
+    color: #fff;
+    background-color:#00B5B8;
+}
+.Tr_Mouse_Pointer_Move{background-color:#BFC5DB;}
+.Tr_Mouse_Out{background-color:#fff}
+.Td_Mouse_Tip{color:#FF9C00}
+
+.list_pagination{background:#efefef;border:1px solid #D5D5D5;border-top: 0;}

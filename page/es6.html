@@ -7,49 +7,158 @@
     <script type="text/javascript" src="../libs/jquery-1.12.3.min.js"></script>
     <script type="text/javascript" src="../node_modules/_babel-core@5.8.38@babel-core/browser.js"></script>
     <title>ES6语法</title>
-    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        #ul1 li {
+            width: 300px;
+            background: #ccc;
+            margin: 10px;
+            float: left;
+            line-height: 30px;
+            text-indent: 1em;
+        }
+        #menu {
+            width: 150px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: beige;
+            display: none;
+        }
+        #menu li {
+            padding: 3px;
+        }
+        #menu li:hover {
+            background: #ccc;
+        }
+    </style>
 </head>
 
-<body>
+<bod>
     <button onclick="openWindow('frameL.html')">openWindow</button>
-    <button onclick="openWindow('frameR.html')">openWindow2</button>
-    
-    <button onclick="closeWindow()">closeWindow</button>
-    <button onclick="showDialog()">showDialog</button>
-    <button onclick="getChildP()">getChildP</button>
-    
+    <ul id="menu">
+        <li>turn red</li>
+        <li>turn green</li>
+        <li>turn yellow</li>
+        <li>turn grey</li>
+    </ul>
+    <ul id="ul1">
+        <li>alink</li>
+        <li>blink</li>
+        <li>clink</li>
+    </ul>
+
     <script type="text/babel">
-        
+        function c (){
+            const arrs = [];
+            for (let i=0; i<10; i++){
+                arrs.push(function(){
+                    console.log(i);
+                })
+            }
+            arrs.forEach(arr => arr());
+        }
+        c();
+
+        // setInterval(() => {
+        //     const now = new Date()
+        //     const hours = now.getHours().toString()
+        //     const minutes = now.getMinutes().toString()
+        //     const seconds = now.getSeconds().toString()
+        //     console.log(`${hours.padStart(2, 0)}:${minutes.padStart(2, 0)}:${seconds.padStart(2, 0)}`)
+        // }, 1000)
+            // includes()   repeat()    startsWith()     endsWith()    padStart()
+            function dd() {
+                const tmp = `heh`;
+                console.log(tmp.includes('d'));
+                console.log(tmp.repeat(3));
+                console.log(tmp.startsWith('h'));
+            }
+
+            function ee() {
+                // let address = '北京海淀区'
+                // let name = 'lala'
+                // let str = '${name}在${address}上班...'
+                // function myTemplate(str) {
+                //     return `${name} 在 ${address} 上班`;
+                // }
+                // console.log(myTemplate(str)) // lala在北京海淀区上班...
+
+                const age = 16;
+                const hobby = "pingpang";
+                function tag (string){
+                    return string;
+                }
+                const str = tag`age is: ${age}，hobby is: ${hobby}`
+                console.log('f',str);
+            }
+
+        ee()
+
 
     </script>
     <script type="text/javascript">
-     var w = null;
-        function openWindow (url) {
-            if ( w != null ) {
-                w.close();
+        function a() {
+            var arr = [];
+            for (var i=0; i<10; i++){
+                arr.push(function(){
+                    console.log(i)
+                })
             }
-            w = window.open(url,"","width=500,height=300,left=200,top=30,menubar=no,toolbar=no,status=no,scrollbars=yes")
-        }
+            arr.forEach(function(ar){
+                ar()
+            })
+        } 
+        // a();
 
-        function closeWindow() {
-            w.close();
-        }
-
-        function showDialog () {
-            if(w.closed == true) {
-                console.log("closed")
-            }else{
-                console.log("opened");
+        function b() {
+            var arr = [];
+            for(var i=0; i<10; i++){
+                arr.push((function c(arg) {
+                    return function (){
+                        console.log(arg)
+                    }
+                }(i)));
+                // (function c(arg) {
+                //     console.log(arg)
+                // })(i)
             }
         }
-
-        function getChildP () {
-            console.log(w);
+    //    b();
+    // 右键禁止查看
+        document.onmousedown = function(){
+            if(event.button ==2 ){
+                // alert("forbiden check");
+            }
         }
-        
-    </script>
-    <script type="text/javascript">
+    // 右键菜单
+        window.onload = function (){
+            var aLi = document.getElementById('ul1').children;
+            var oMenu = document.getElementById('menu');
+            var aMenuLi = oMenu.children;
+            for (var i=0; i<aLi.length; i++) {
+                aLi[i].oncontextmenu = function (ev) {
+                    var oEvent = ev || event;
+                    oMenu.style.display = 'block';
+                    oMenu.style.left = oEvent.clientX + 'px';
+                    oMenu.style.top = oEvent.clientY + 'px';
+                    var _this = this;
 
+                    // aMenuLi[0].onclick = function () {
+                    //     _this.parentNode.removeChild(_this);
+                    // }
+                    return false;
+                }
+            }
+            document.onclick = function () {
+                oMenu.style.display = 'none';
+
+            }
+        }
     </script>
 </body>
 </html>

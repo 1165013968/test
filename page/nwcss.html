@@ -8,14 +8,37 @@
     <!-- <link type="text/css" href="../libs/layui/css/layui.css" rel="stylesheet" /> -->
     <link type="text/css" href="../libs/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" />
     <script type="text/javascript" src="../libs/jquery-1.12.3.min.js"></script>
-    <script type="text/javascript" src="../libs/layui/layui.all.js"></script>
+    <!-- <script type="text/javascript" src="../libs/layui/layui.all.js"></script> -->
     <script type="text/javascript" src="../libs/My97DatePicker/WdatePicker.js" ></script>
     <title>内网UI</title>
-    
+    <style>
+        h2,h3 {
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
+        p {
+            margin: 1rem;
+        }
+    </style>
 </head>
 
 <body>
-    
+    <!-- 登录页面 -->
+    <h2>登录页面</h2>
+    <a href="component/login.html">登录</a>
+
+    <!-- 弹框 -->
+    <h2>弹框</h2>
+    <a href="component/dialog.html">弹框</a>
+
+    <!-- header -->
+    <h2>header</h2>
+    <a href="component/header.html">header</a>
+
+    <!-- table -->
+    <h2>table</h2>
+    <a href="component/table.html">table</a>
+
     <!-- 按钮 -->
     <h2>按钮</h2>
     <input class="h-btn h-blue-btn" type="button" value="保存">
@@ -33,13 +56,21 @@
     </p>
     <!-- 下拉菜单 -->
     <h3>下拉菜单</h3>
+    <select>
+        <option>a</option>
+        <option>a</option>
+        <option>a</option>
+        <option>a</option>
+        
+    </select>
 
     <!-- 提示框 -->
     <h3>提示框</h3>
+    <div class="h-tip">the tips 提示文字提示文字</div>
 
     <!-- 日期控件 -->
     <h3>日期控件</h3>
-    <input id="dateP" class="Wdate" onfocus="WdatePicker({readOnly:true,maxDate:'%y-%M-%d'})"/>
+    <input id="dateP" class="Wdate h-input" onfocus="WdatePicker({readOnly:true,maxDate:'%y-%M-%d'})"/>
 
     <!-- 单选框  复选框-->
     <h3>单选框  复选框</h3>
@@ -53,10 +84,10 @@
 
     <!-- loading -->
     <h3>loading</h3>
-    <p>
-        <div class="h-loading">
-            <!-- <img src="../imgs/loading.png" /> -->
-        </div>
-    </p>
+    <div class="h-loading">
+        <!-- <img src="../imgs/loading.png" /> -->
+    </div>
+
+
 </body>
 </html>

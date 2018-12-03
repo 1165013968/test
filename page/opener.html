@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <script type="text/javascript" src="../libs/jquery-1.12.3.min.js"></script>
+    <title>opener</title>
+    
+</head>
+
+<body>
+    <button onclick="openWindow('frameL.html')">openWindow</button>
+    <button onclick="openWindow('frameR.html')">openWindow2</button>
+    
+    <button onclick="closeWindow()">closeWindow</button>
+    <button onclick="showDialog()">showDialog</button>
+    <button onclick="getChildP()">getChildP</button>
+
+
+    <button onclick="dialog()" title="打开子页面dialog，将子页面值传给父页面">父子页面传值</button>
+    
+    <input type="text" id="username" class=""/>
+    
+    <script type="text/javascript">
+        var win;    //打开的子页面或模态框
+        var timer;  //定时器
+
+        var w = null;
+        function openWindow (url) {
+            if ( w != null ) {
+                w.close();
+            }
+            var iLeft = (window.screen.availWidth-500-10)/2;
+            var iTop = (window.screen.availHeight-500)/2;
+            // w = window.open(url,"","width=500,height=300,left=200,top=30,menubar=no,toolbar=no,status=no,scrollbars=yes")
+            w = window.open(url,"","width=500,height=300,left="+ iLeft +",top=" + iTop + "menubar=no,toolbar=no,status=no,scrollbars=yes")
+        }
+
+        function closeWindow() {
+            w.close();
+        }
+
+        function showDialog () {
+            if(w.closed == true) {
+                console.log("closed")
+            }else{
+                console.log("opened");
+            }
+        }
+
+        function getChildP (p) {
+            var s = 23;
+            console.log(p,s);
+        }
+
+        function get_cookie(name) {
+            var search = name + "=";
+            var returnVal = "";
+            if (document.cookie.length>0) {
+                start = document.cookie.indexOf(search);
+                if(start!=-1) {
+                    start += search.length;
+                    end = document.cookie.indexOf(";",start);
+                    if (end==-1) {
+                        end = document.cookie.length;
+                    }
+                    returnVal = unescape(document.cookie.substr(start,end))
+                }
+            }
+            return returnVal;
+        }
+
+        function loadpopup () {
+            if (get_cookie("popup")==''){
+                openWindow("frameL.html");
+                document.cookie.popup="yes"
+            } 
+        }
+
+
+
+        function dialog() {
+            var height=800;
+            var width=600;
+            var url="abc.html";
+            window.args = {"a":1};      //父传值给子
+            if(isIE()){  //IE
+                var params = 'dialogWidth:' + width + 'px;dialogHeight:' + height + 'px;status:no;dialogLeft:'
+                            + ((window.screen.width - width) / 2) + 'px;dialogTop:' + (((window.screen.height - height) / 2) - 50) + 'px;';
+                
+                win = window.showModalDialog("framePrt.html",[url],params);
+            }else{  //chrome
+                var paramsChrome = 'height=' + height + ', width=' + width + ', top=' + (((window.screen.height - height) / 2) - 50) +
+                    ',left=' + ((window.screen.width - width) / 2) + ',toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no';
+                win = window.open("framePrt.html","",paramsChrome);
+            }
+            timer = window.setInterval("ifWindowClosed()",1000);
+        }
+
+        
+        function ifWindowClosed() {  
+            var returnVal;  //父接收子的传值;
+            if(!win) {
+                document.getElementById("username").value = "";
+                return;
+            }
+            if(isIE()){
+                returnVal = win;
+                doAction(returnVal);
+                
+            }else{
+                if(win.closed==true){
+                    returnVal = win.returnValue;
+                    doAction(returnVal);
+                }
+            } 
+        }
+
+        function doAction(returnVal) {
+            document.getElementById("username").value = returnVal["username"];
+            window.clearInterval(timer);
+        }
+       
+
+        function isIE(){
+            if (!!window.ActiveXObject || "ActiveXObject" in window) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        
+    </script>
+</body>
+</html>

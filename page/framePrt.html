@@ -17,14 +17,17 @@
     <article id="article">
         parent content
     </article>
-    <p>
-        <button id="lClick" onclick="leftClick()">plclick</button>
-    </p>
-    <p>
-        <button id="rClick" onclick="rightClick()">prclick</button>
-    </p>
+    <p><button id="lClick" onclick="leftClick()">plclick</button></p>
+    <p><button id="rClick" onclick="rightClick()">prclick</button></p>
+    <p><button id="getParentPrms" onclick="getParentPrms()">getParentPrms</button></p>
+    <div id="showbox" style="width: 200px;height: 200px;"></div>
+
     <iframe id="frameL" style="width: 200px;height: 200px;" src="./frameL.html"></iframe>
     <iframe id="frameR" style="width: 200px;height: 200px;" src="./frameR.html"></iframe>
+<br>
+
+    <input type="text" id="username" name="username" placeholder="input username please..."/>
+    <button id="save" onclick="getReturnVal()">Save</button>
 
 
     <script>
@@ -39,6 +42,35 @@
         }
         function rightClick() {
             document.getElementById("frameR").contentWindow.childright();
+        }
+
+// 父页面向子页面传的值
+// IE         window.dialogArguments;
+// chrome     window.opener;
+//
+        function getParentPrms () {
+            // 父页面向子页面传的值
+            if(window.opener!=undefined){   //chrome
+                var parent = window.opener; 
+                document.getElementById("showbox").innerHTML = parent["args"]["a"];
+                console.log("谷歌"+parent);
+            }else{  //IE
+                var parentObj = window.dialogArguments;
+                document.getElementById("showbox").innerHTML = parentObj["a"];
+            }
+           
+        }
+
+//   子页面向父页面传值
+//   IE 自带的模态框，          window.returnValue;
+//   chrome  则通过给window添加 returnValue 属性
+//
+        function getReturnVal() {
+            var username = document.getElementById("username").value;
+            // 窗口关闭时的，回传参数
+            // window.returnValue = {"c":3};
+            window.returnValue = {"username":username,"age":16};
+            window.close();
         }
 
 
